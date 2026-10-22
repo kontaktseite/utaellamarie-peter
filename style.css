@@ -166,7 +166,7 @@ html:not(.no-js) .works:not(.offen) .work--extra{display:none;}
 }
 @media (min-width:900px){
   :root{--maxw:1280px;}
-  .stage{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(400px,1fr);gap:64px;align-items:center;min-height:100svh;padding:40px 48px;}
+  .stage{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(400px,1fr);gap:64px;align-items:center;padding:40px 48px 0;}
   .col-art{gap:18px;}
   .brand{text-align:left;}
   .brand-name{font-size:2.6rem;}
@@ -180,7 +180,7 @@ html:not(.no-js) .works:not(.offen) .work--extra{display:none;}
   .field{margin-bottom:14px;}
   .social-mount{flex-direction:row;}
   .social-btn{flex:1 1 0;}
-  .section{padding:96px 48px 8px;}
+  .section{padding:48px 48px 8px;}
   .section h2{font-size:2.3rem;margin-bottom:36px;}
   .works,.works.offen,.works--viele{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 36px;}
   .works-more-wrap{margin-top:48px;}
