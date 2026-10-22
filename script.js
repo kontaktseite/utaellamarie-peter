@@ -272,6 +272,10 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
     }, { rootMargin: '0px', threshold: 0 });
-    items.forEach(function (el) { io.observe(el); });
+    items.forEach(function (el) {
+      // Was beim Laden schon (teilweise) im Bild ist, sofort zeigen
+      if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('visible'); }
+      else { io.observe(el); }
+    });
   }
 })();
