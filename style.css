@@ -107,8 +107,8 @@ svg.check{width:74px;height:74px;margin:0 auto;display:block;}
 .section{max-width:var(--maxw);margin:0 auto;padding:34px 18px 6px;}
 .section h2{font-size:clamp(1.25rem,5vw,1.7rem);color:var(--dunkel);margin-bottom:16px;}
 /* Werke als Galerie: jedes Werk vollständig, nichts abgeschnitten */
-.works{list-style:none;margin:0;padding:0;columns:2;column-gap:14px;}
-.work{break-inside:avoid;margin:0 0 18px;}
+.works{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px;align-items:start;}
+.work{margin:0;}
 .work-open{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:var(--radius-sm);}
 .work img{width:100%;height:auto;border-radius:var(--radius-sm);background:var(--border);box-shadow:var(--shadow-card);transition:transform .25s ease, box-shadow .25s ease;}
 .work-open:hover img{transform:translateY(-3px);box-shadow:0 14px 34px rgba(28,27,25,.16);}
@@ -123,7 +123,7 @@ svg.check{width:74px;height:74px;margin:0 auto;display:block;}
 .lightbox-nav:hover,.lightbox-close:hover{background:rgba(255,255,255,.26);}
 /* Werke: zuerst nur einige, Rest per Knopf */
 html:not(.no-js) .works:not(.offen) .work--extra{display:none;}
-.works-more-wrap{text-align:center;margin:6px 0 0;}
+.works-more-wrap{text-align:center;margin:28px 0 0;}
 .works-more{font:inherit;font-weight:600;font-size:.95rem;color:var(--dunkel);background:var(--surface);border:1.5px solid var(--dunkel);border-radius:999px;padding:12px 26px;min-height:46px;cursor:pointer;box-shadow:var(--shadow-card);transition:background .18s ease,color .18s ease;}
 .works-more:hover{background:var(--dunkel);color:#fff;}
 .lightbox-close{position:fixed;top:14px;right:18px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:28px;line-height:1;cursor:pointer;}
@@ -168,9 +168,8 @@ html:not(.no-js) .works:not(.offen) .work--extra{display:none;}
   .social-btn{flex:1 1 0;}
   .section{padding:96px 48px 8px;}
   .section h2{font-size:2.3rem;margin-bottom:36px;}
-  .works{columns:2;column-gap:44px;}
-  .works.offen,.works--viele{columns:3;column-gap:36px;}
-  .work{margin-bottom:40px;}
+  .works,.works.offen,.works--viele{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 36px;}
+  .works-more-wrap{margin-top:48px;}
   .work-title{font-size:1.2rem;margin-top:14px;}
   .work-info{font-size:.88rem;}
   .about{max-width:820px;}
