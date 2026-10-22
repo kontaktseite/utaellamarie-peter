@@ -271,7 +271,7 @@
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    }, { rootMargin: '0px', threshold: 0 });
     items.forEach(function (el) { io.observe(el); });
   }
 })();
