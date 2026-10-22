@@ -166,14 +166,14 @@ html:not(.no-js) .works:not(.offen) .work--extra{display:none;}
 }
 @media (min-width:900px){
   :root{--maxw:1280px;}
-  .stage{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(400px,1fr);gap:64px;align-items:center;padding:40px 48px 0;}
+  .stage{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(400px,1fr);gap:64px;align-items:end;padding:40px 48px 0;}
   .col-art{gap:18px;}
   .brand{text-align:left;}
   .brand-name{font-size:2.6rem;}
   .brand-sub{font-size:.75rem;margin-top:8px;}
   .hero{background:transparent;box-shadow:none;border-radius:0;}
   .hero img{width:auto;max-width:100%;height:auto;max-height:min(74svh,760px);border-radius:var(--radius);box-shadow:0 18px 50px rgba(28,27,25,.16);}
-  .col-form{display:flex;align-items:center;}
+  .col-form{display:flex;align-items:flex-end;}
   .card{width:100%;max-width:520px;margin-top:0;padding:36px 36px 38px;}
   .card h1{font-size:2rem;}
   .lead{font-size:1rem;margin:10px 0 18px;}
