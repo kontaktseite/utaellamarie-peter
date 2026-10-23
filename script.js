@@ -4,7 +4,7 @@
   'use strict';
   document.documentElement.classList.remove('no-js');
   var WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzx_kRcqY1_DGJwblhI_2YF2bXnEIr5Gfj6nDIY3JmhVgL-CBiiW4u8mHE9-lbJE3xA/exec';
-  var KUENSTLER_ID = 'test';   // Zeile im Blatt "Kuenstler"
+  var KUENSTLER_ID = 'utaellamariepeter';   // Zeile im Blatt "Kuenstler"
 
   var form = document.getElementById('contactForm');
   var formView = document.getElementById('formView');
