@@ -122,3 +122,10 @@
   .ed-weg-text{display:none;}
   .ed-weg{padding:0 14px;}
 }
+
+/* Kleine Lade-Punkte (Knöpfe, Meldungen) */
+.ed-laden{display:inline-flex;align-items:center;gap:10px;}
+.ed-punkte-klein{height:auto;gap:5px;}
+.ed-punkte-klein span{width:8px;height:8px;background:currentColor;animation-name:ed-hupf-klein;}
+@keyframes ed-hupf-klein{0%,80%,100%{transform:translateY(0);opacity:.45}40%{transform:translateY(-6px);opacity:1}}
+.ed-login-karte .ed-knopf:disabled{opacity:1;cursor:wait;}

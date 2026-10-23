@@ -22,6 +22,14 @@
     e.setAttribute('data-ed-ui', '');
     return e;
   }
+  function ladePunkte(text) {
+    var s = el('span', 'ed-laden');
+    var p = el('span', 'ed-punkte ed-punkte-klein');
+    p.appendChild(el('span')); p.appendChild(el('span')); p.appendChild(el('span'));
+    s.appendChild(p);
+    if (text) s.appendChild(el('span', null, text));
+    return s;
+  }
   function warte(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
   function api(daten, sekunden) {
     daten.seite = SEITE; daten.code = code;
@@ -35,16 +43,17 @@
         try { return JSON.parse(t); } catch (e) { return { ok: false, fehler: 'antwort' }; }
       }, function () { clearTimeout(uhr); return { ok: false, fehler: 'netz' }; });
   }
-  function meldung(text, rueckgaengig) {
+  function meldung(text, rueckgaengig, laedt) {
     var alt = document.querySelector('.ed-toast'); if (alt) alt.remove();
-    var t = el('div', 'ed-toast'); t.appendChild(document.createTextNode(text));
+    var t = el('div', 'ed-toast');
+    if (laedt) t.appendChild(ladePunkte(text)); else t.appendChild(document.createTextNode(text));
     if (rueckgaengig) {
       var b = el('button', 'ed-toast-btn', 'Rückgängig'); b.type = 'button';
       b.addEventListener('click', function () { rueckgaengig(); t.remove(); });
       t.appendChild(b);
     }
     document.body.appendChild(t);
-    setTimeout(function () { if (t.parentNode) t.remove(); }, rueckgaengig ? 8000 : 4500);
+    if (!laedt) setTimeout(function () { if (t.parentNode) t.remove(); }, rueckgaengig ? 8000 : 4500);
   }
   function markiere() { geaendert = true; gespeichert = false; status(); }
   function editierbar(e, an) {
@@ -59,7 +68,7 @@
     });
   }
   var css = document.createElement('link');
-  css.rel = 'stylesheet'; css.href = 'editor.css?v=3';
+  css.rel = 'stylesheet'; css.href = 'editor.css?v=4';
   document.head.appendChild(css);
   var sortierer = ladeSkript('sortable.min.js?v=1.15.2');
 
@@ -117,7 +126,7 @@
       ev.preventDefault();
       code = feld.value.replace(/[\s-]/g, '').toUpperCase();
       if (!code) { fehler.textContent = 'Bitte den Code eingeben.'; return; }
-      knopf.disabled = true; knopf.textContent = 'Einen Moment …'; fehler.textContent = '';
+      knopf.disabled = true; knopf.textContent = ''; knopf.appendChild(ladePunkte('Wird geprüft')); fehler.textContent = '';
       var weiter = TESTMODUS
         ? Promise.resolve(code === 'TEST' ? { ok: true, html: null } : { ok: false, fehler: 'code' })
         : api({ aktion: 'laden' }, 40).then(function (r) {
@@ -253,7 +262,7 @@
   function neuesBild(art, max) {
     return waehleBild().then(function (datei) {
       if (!datei) return null;
-      meldung('Foto wird vorbereitet …');
+      meldung('Foto wird vorbereitet', null, true);
       return verkleinere(datei, max).then(function (b) {
         var name = art + '-' + Date.now().toString(36) + '.jpg';
         var vorschau = URL.createObjectURL(b.blob);
