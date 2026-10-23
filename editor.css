@@ -109,7 +109,9 @@
 .ed-toast-btn{background:#fff;color:#12303A;border:0;border-radius:999px;padding:8px 14px;font-weight:700;cursor:pointer;}
 
 /* Vorschau: alles Bearbeitende ausblenden */
-.ed-vorschau [data-ed-ui]:not(.ed-leiste):not(.ed-toast):not(.ed-fenster){display:none!important;}
+.ed-vorschau [data-ed-ui]:not(.ed-leiste):not(.ed-leiste *):not(.ed-toast):not(.ed-toast *):not(.ed-fenster):not(.ed-fenster *){display:none!important;}
+.ed-vorschau .ed-leiste{background:#2f6f3e;}
+.ed-zurueck-aktiv{background:#ffd166!important;border-color:#ffd166!important;color:#12303A!important;font-weight:700;}
 
 /* Handy: Leiste kompakt */
 @media (max-width:520px){

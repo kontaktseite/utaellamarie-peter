@@ -59,7 +59,7 @@
     });
   }
   var css = document.createElement('link');
-  css.rel = 'stylesheet'; css.href = 'editor.css?v=2';
+  css.rel = 'stylesheet'; css.href = 'editor.css?v=3';
   document.head.appendChild(css);
   var sortierer = ladeSkript('sortable.min.js?v=1.15.2');
 
@@ -408,7 +408,10 @@
     hilfeKnopf.addEventListener('click', hilfe);
     vorschau.addEventListener('click', function () {
       var an = document.documentElement.classList.toggle('ed-vorschau');
-      vorschau.textContent = an ? 'Zurück' : 'Vorschau';
+      vorschau.textContent = an ? '✏️ Zurück zum Bearbeiten' : 'Vorschau';
+      vorschau.classList.toggle('ed-zurueck-aktiv', an);
+      hilfeKnopf.hidden = an;
+      if (an) meldung('Vorschau: So sehen es Ihre Besucher. Oben „Zurück zum Bearbeiten“ tippen.');
       document.querySelectorAll('.ed-text').forEach(function (t) { editierbar(t, !an); });
     });
     speichernKnopf.addEventListener('click', speichern);
