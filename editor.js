@@ -97,6 +97,7 @@
 
   // ---------- Anmelden ----------
   function anmeldung() {
+    if (!TESTMODUS) api({ aktion: 'ping' }, 20);   // Google-Skript schon mal aufwecken
     var box = el('div', 'ed-login');
     var karte = el('form', 'ed-login-karte');
     karte.appendChild(el('h2', null, 'Seite bearbeiten'));
@@ -127,7 +128,7 @@
         knopf.disabled = false; knopf.textContent = 'Anmelden';
         if (!r.ok) {
           fehler.textContent = r.fehler === 'code' ? 'Der Code stimmt nicht. Bitte noch einmal prüfen.'
-            : r.fehler === 'gesperrt' ? 'Zu viele Versuche. Bitte in 15 Minuten erneut versuchen.'
+            : r.fehler === 'gesperrt' ? 'Zu viele Versuche. Bitte in 10 Minuten erneut versuchen.'
             : 'Das hat gerade nicht geklappt. Bitte erneut versuchen.';
           return;
         }
